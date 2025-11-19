@@ -1,0 +1,97 @@
+/* 🌐 Smooth scroll for navigation links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ✨ Host container for smooth fade-in when app loads */
+:host {
+  display: block;
+  animation: fadeIn 0.7s ease-in-out;
+  background-color: var(--bg);
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text);
+}
+
+/* 🌸 Container — centers all sections with balance */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 🧩 Global section style */
+section {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 🪶 Alternate soft background for even sections */
+section:nth-of-type(even) {
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 48px 24px;
+}
+
+/* 🌈 Footer */
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 24px 0;
+  font-size: 0.95rem;
+  background: transparent; /* ✅ removes the “box” look */
+  box-shadow: none;
+  border: none;
+}
+
+
+/* 💫 Fade animation on initial load */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🧭 Responsive adjustments */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 20px;
+    gap: 56px;
+  }
+
+  section:nth-of-type(even) {
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+    gap: 48px;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: 24px 0;
+  }
+}
+
+/* 🚫 Prevent layout shifts */
+body {
+  overflow-x: hidden;
+}

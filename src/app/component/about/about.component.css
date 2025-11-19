@@ -1,0 +1,17 @@
+.about {
+  max-width: var(--container-width);
+  margin: auto;
+  padding: 60px 0;
+}
+
+.about h2 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-bottom: 18px;
+}
+
+.about p {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 700px;
+}

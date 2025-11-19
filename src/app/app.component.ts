@@ -1,12 +1,44 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Component, HostListener } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router'; // ✅ added router support
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterOutlet // ✅ added here
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'dibyajyoti-portfolio';
+  currentYear = new Date().getFullYear();
+ private lastUrl: string = '/';
+   constructor(private router: Router) {}
+  ngOnInit() {
+    // Aos.init({
+    //   duration: 800, // animation speed in ms
+    //   once: true, // only animate once
+    //   easing: 'ease-in-out'
+    // });
+  
+  // ✅ Track route changes
+    this.router.events.subscribe(() => {
+      this.lastUrl = this.router.url;
+    });
+  }
+  /** 
+   * 🧭 Handle browser back button globally
+   */
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event: PopStateEvent) {
+    const currentUrl = this.router.url;
+
+    // Case 1: If currently on project details page, go back to home
+    if (currentUrl.startsWith('/project/')) {
+      this.router.navigate(['/']);
+      return;
+    }
+  }
 }

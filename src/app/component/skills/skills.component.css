@@ -1,0 +1,29 @@
+.skills {
+  max-width: var(--container-width);
+  margin: auto;
+  padding: 60px 0;
+}
+
+.skills-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.skill-box {
+  padding: 18px;
+  text-align: center;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: 0.25s ease;
+}
+
+.skill-box:hover {
+  transform: translateY(-4px);
+}
+
+body.dark-mode .skill-box {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.06);
+}

@@ -1,0 +1,37 @@
+.projects {
+  max-width: var(--container-width);
+  margin: auto;
+  padding: 60px 0;
+}
+
+.project-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.project-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: 0.25s ease;
+}
+
+.project-card h3 {
+  font-family: var(--font-heading);
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: var(--muted);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+body.dark-mode .project-card {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.06);
+}
